@@ -1,0 +1,46 @@
+
+package:
+    name: mkl_umath
+    version: 0.1.2
+
+source:
+    path: ../
+
+build:
+    number: 0
+
+requirements:
+    build:
+      - ${{ compiler('c') }}
+      - ${{ compiler('cxx') }}
+      - cython
+    host:
+      - scikit-build-core
+      - pip
+      - cmake
+      - ninja
+      - python
+      - numpy <=1.21
+      - mkl-devel <=2023.2
+    run:
+      - python
+      - mkl >=2022
+      - ${{ pin_compatible('numpy') }}
+
+tests:
+    - script:
+      - python
+      files:
+          source:
+          - mkl_umath/tests/test_basic.py
+    - python:
+        imports:
+          - mkl_umath
+          - mkl_umath._ufuncs
+          - mkl_umath._patch
+
+about:
+    homepage: http://github.com/IntelPython/mkl_umath
+    license: BSD-3-Clause
+    license_file: LICENSE.txt
+    summary: Universal functions for real and complex floating point arrays powered by Intel(R) Math Kernel Library Vector (Intel(R) MKL) and Intel(R) Short Vector Math Library (Intel(R) SVML)

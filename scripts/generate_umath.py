@@ -950,7 +950,23 @@ def make_code(funcdict, filename):
 
 
 if __name__ == "__main__":
-    filename = __file__
+    import argparse
+    import os.path
+    
+    parser = argparse.ArgumentParser(
+                    prog='generate_umath.py',
+                    description='Generate __umath_generated.c')
+    parser.add_argument('-o', '--output', help='Output file')
+    args = parser.parse_args()
+
+    filename = os.path.relpath(__file__)
+
     code = make_code(defdict, filename)
-    with open('__umath_generated.c', 'w') as fid:
-        fid.write(code)
+    
+    if not args.output:
+        print(code)
+    else:
+        with open(args.output, 'w') as fid:
+            nw = fid.write(code)
+        if nw != len(code):
+            raise RuntimeError(f"Error writing to file {args.output}: {nw} byte(s) written out of {len(code)}")

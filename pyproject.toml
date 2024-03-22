@@ -1,0 +1,49 @@
+[build-system]
+requires = ["scikit-build-core", "cython"]
+build-backend = "scikit_build_core.build"
+
+[project]
+name = "mkl-umath"
+version = "0.1.2"
+description = "MKL-based universal functions for NumPy arrays"
+readme = "README.md"
+license = { file = "LICENSE.txt" }
+authors = [
+    { name = "Intel Corporation" },
+]
+maintainers = [
+    { name = "Intel Corp.", email = "scripting@intel.com" },
+]
+keywords = [
+    "mkl_umath",
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved",
+    "Operating System :: MacOS",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: POSIX",
+    "Operating System :: Unix",
+    "Programming Language :: C",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3.6",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Software Development",
+]
+dependencies = [
+    "numpy",
+]
+
+[project.urls]
+Download = "http://github.com/IntelPython/mkl_umath"
+Homepage = "http://github.com/IntelPython/mkl_umath"
+
+
+[tool.scikit-build]
+cmake.verbose = true
+logging.level = "INFO"
